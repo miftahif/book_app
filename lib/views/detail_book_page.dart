@@ -1,4 +1,7 @@
 import 'dart:convert';
+//import 'dart:html';
+//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:book_app/models/book_detail_response.dart';
 import 'package:book_app/models/bool_list_response.dart';
@@ -150,7 +153,25 @@ class _DetailBookPageState extends State<DetailBookPage> {
                         style: ElevatedButton.styleFrom(
                             //fixedSize: Size(double.infinity, 50),
                             ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          print("url");
+                          Uri uri = Uri.parse(detailBook!.url!);
+                          // Coba ngelink
+                          // if (await canLaunch(uri)) {
+                          //   await launch(uri);
+                          // } else {
+                          //   print("tidak berhasil navigasi");
+                          // }
+                          // Coba ngelink
+                          try {
+                            (await canLaunchUrl(uri))
+                                ? launchUrl(uri)
+                                : print("tidak berhasil navigasi");
+                          } catch (e) {
+                            print("error");
+                            print(e);
+                          }
+                        },
                         child: Text("BUY")),
                   ),
                   SizedBox(height: 20),
