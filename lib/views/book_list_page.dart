@@ -1,10 +1,10 @@
-import 'dart:convert';
+//import 'dart:convert';
 
 import 'package:book_app/controllers/book_controller.dart';
-import 'package:book_app/models/bool_list_response.dart';
+//import 'package:book_app/models/bool_list_response.dart';
 import 'package:book_app/views/detail_book_page.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class BookListPage extends StatefulWidget {
@@ -19,7 +19,6 @@ class _BookListPageState extends State<BookListPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     bookController = Provider.of<BookController>(context, listen: false);
     bookController!.fetcBookApi();
@@ -29,10 +28,10 @@ class _BookListPageState extends State<BookListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Catalouge"),
+        title: const Text("Book Catalouge"),
       ),
       body: Consumer<BookController>(
-        child: Center(child: CircularProgressIndicator()),
+        child: const Center(child: CircularProgressIndicator()),
         builder: (context, controller, child) => Container(
           child: bookController!.bookList == null
               ? child
